@@ -1,0 +1,59 @@
+{% extends 'template.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-between">
+        <div class="col-4">
+          <h1>Registros</h1>
+        </div>
+        <div class="col-4">
+            <form method="POST" action="/registros" class="d-flex">
+                {{ form_buscar.csrf_token }}
+                {% if form_buscar.busca.errors %}
+                    {{ form_buscar.busca(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for erro in form_buscar.busca.errors %}
+                            {{ erro }}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form_buscar.busca(class="form-control me-2 mt-2", placeholder="Digite o e-mail a ser buscado") }}
+                {% endif %}
+                {{ form_buscar.botao_submit_busca(class="btn btn-success mt-2") }}
+
+            </form>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Data e Hora (UTC)</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Forma Pagamento</th>
+                    <th scope="col">Parcelas</th>
+                </tr>
+            </thead>
+        {% for registro in registros %}
+            <tbody>
+                <tr>
+                    <th scope="row">{{ registro.id }}</th>
+                    <td>{{ registro.data }}</td>
+                    <td>{{ registro.nome }}</td>
+                    <td>{{ registro.email }}</td>
+                    <td>{{ registro.status }}</td>
+                    <td>{{ registro.valor }}</td>
+                    <td>{{ registro.forma_pagamento }}</td>
+                    <td>{{ registro.parcelas }}</td>
+                </tr>
+            </tbody>
+        {% endfor %}
+
+    </div>
+{% endblock %}
