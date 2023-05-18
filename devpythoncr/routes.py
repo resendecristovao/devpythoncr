@@ -64,3 +64,9 @@ def sair():
     logout_user()
     flash('Logout efetuado', 'alert-success')
     return redirect(url_for('login'))
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        print(request.json)
+        return 200
