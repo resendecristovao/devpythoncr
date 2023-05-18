@@ -69,4 +69,7 @@ def sair():
 def webhook():
     if request.method == 'POST':
         print(request)
-        return '200 - OK'
+        print(request.json)
+        return '200'
+    else:
+        return '404'
