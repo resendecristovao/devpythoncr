@@ -4,10 +4,10 @@ from flask_login import UserMixin
 
 @login_manager.user_loader
 def load_usuario(id_usuario):
-    return Usuario.query.get(int(id_usuario))
+    return Usuarios.query.get(int(id_usuario))
 
 
-class Usuario(database.Model, UserMixin):
+class Usuarios(database.Model, UserMixin):
     id = database.Column(database.Integer, primary_key=True)
     email = database.Column(database.String, nullable=False, unique=True)
     senha = database.Column(database.String, nullable=False)
@@ -22,3 +22,4 @@ class Registros(database.Model):
     valor = database.Column(database.Float, nullable=False)
     forma_pagamento = database.Column(database.String, nullable=False)
     parcelas = database.Column(database.Integer, nullable=False)
+    acao = database.Column(database.String, nullable=False)

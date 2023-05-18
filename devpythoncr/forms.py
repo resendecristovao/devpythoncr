@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SearchField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from devpythoncr.models import Usuario
+from devpythoncr.models import Usuarios
 
 class FormCriarConta(FlaskForm):
     email = StringField('E-mail', validators=[DataRequired(), Email()])
@@ -11,7 +11,7 @@ class FormCriarConta(FlaskForm):
     botao_submit_criarconta = SubmitField('Criar Conta')
 
     def validate_email(self, email):
-        usuario = Usuario.query.filter_by(email=email.data).first()
+        usuario = Usuarios.query.filter_by(email=email.data).first()
         if usuario:
             raise ValidationError('E-mail já cadastrado. Cadastre-se com outro e-mail ou faça login')
 
