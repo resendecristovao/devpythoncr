@@ -68,5 +68,5 @@ def sair():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     if request.method == 'POST':
-        print(request.json)
+        print(request)
         return '200 - OK'
