@@ -27,8 +27,8 @@ with app.app_context():
     database.drop_all()
     database.create_all()
     print("BD criado.")
-else:
-    print("BD existente.")
+#else:
+#    print("BD existente.")
     
 
 from devpythoncr import routes
