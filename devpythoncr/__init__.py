@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import os
 import sqlalchemy
+from sqlalchemy_utils import database_exists
 
 app = Flask(__name__)
 
