@@ -22,12 +22,11 @@ from devpythoncr import models
 engine = sqlalchemy.create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
 inspector = sqlalchemy.inspect(engine)
 
-if not os.path.exists("projeto.db"):
-    with app.app_context():
-        database.drop_all()
-        database.create_all()
-        print("BD criado.")
-        print(inspector.get_table_names())
+#if not os.path.exists("projeto.db"):
+with app.app_context():
+    database.drop_all()
+    database.create_all()
+    print("BD criado.")
 else:
     print("BD existente.")
     
